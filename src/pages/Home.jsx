@@ -1,9 +1,11 @@
 import React from 'react'
+import Crud from './Crud'
+
 
 const Home = () => {
     return (
         <div className="home">
-            <h3>Ningun auto agregado, ve a gestion para agregar uno.</h3>
+            <Crud title={"home"} context={"autos"}/>
         </div>
     )
 }

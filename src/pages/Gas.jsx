@@ -1,9 +1,10 @@
 import React from 'react'
+import Crud from './Crud';
 
 const Gas = () => {
     return (
         <div className="gas">
-            <h1>Gas</h1>
+            <Crud title={"gas"} context={"combustible"}/>
         </div>
     )
 }

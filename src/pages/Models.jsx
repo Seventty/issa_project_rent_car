@@ -3,7 +3,7 @@ import React from 'react'
 const Models = () => {
     return (
         <div className="models">
-            <h1>Models</h1>
+            <img src="https://imgur.com/3uZCJlO.png" alt="modelos"></img>
         </div>
     )
 }
