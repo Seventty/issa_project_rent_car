@@ -5,9 +5,13 @@ import { getFirestore, collection, getDocs, doc, getDoc } from 'firebase/firesto
 
 import {Button, Row, Container, Col, Form, Navbar, Table } from 'react-bootstrap';
 
+import './Crud.css';
+
+import Items from './Items/Items';
+
 const Crud = ({title, context}) => {
-    console.log(db.collection);
     const [tasks, setTasks] = useState([]);
+    const [description, setDescription] = useState([]);
     const [newtask, setNewTask] = useState('');
     const [updateTask, setUpdateTask] = useState('');
 
@@ -20,8 +24,8 @@ const Crud = ({title, context}) => {
         fetchData();
     }, []);
 
-    const onCreate = () => {
-      const exampleCol = collection(db, context).add({ name: newtask});
+    const onCreate = async () => {
+      const collec = await collection(db, context).set({ name: newtask});
     }
 
     const onDelete = (id) => {
@@ -34,8 +38,59 @@ const Crud = ({title, context}) => {
 
     return (
         <div>
-            <Container>
-                <Row>
+            <Row>
+                <Col>
+                    <h2>Add new {title}</h2>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                <Form.Control type="text" placeholder="Introduce el campo" value={newtask} onChange={e => setNewTask(e.target.value)}/>
+                                <Button variant="primary" onClick={onCreate}>Add new {context}</Button>
+                            </Form.Group>
+                        </Form>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                <Table striped bordered hover variant="dark">
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                        <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <td>3</td>
+                        <td colSpan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                    </Table>
+                </Col>
+            </Row>
+        </div>
+    )
+}
+
+export default Crud
+
+    {/*
+        <Container>
+                 <Row>
                     <Col>
                         <h2>Add new {title}</h2>
                         <Form>
@@ -66,16 +121,11 @@ const Crud = ({title, context}) => {
                                             <Button variant="danger" onClick={() => onDelete(spell.id)}>Delete {context}</Button>
                                         </td>
                                         <input type="text" placeholder={spell.name} onChange={e => setUpdateTask(e.target.value)}></input>
-                                        <Button className="text-white ml-4" variant="warning" onClick={() => onUpdate(spell.id)}>Update{context}</Button>
+                                        <Button className="text-white ml-4" variant="warning" onClick={() => onUpdate(spell.id)}>Update {context}</Button>
                                     </tr>
                                 ))}
                             </tbody>
                         </Table>
                     </Col>
                 </Row>
-            </Container>
-        </div>
-    )
-}
-
-export default Crud
+            </Container> */}

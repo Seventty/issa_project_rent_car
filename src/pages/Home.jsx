@@ -5,7 +5,7 @@ import Crud from './Crud'
 const Home = () => {
     return (
         <div className="home">
-            <Crud title={"home"} context={"autos"}/>
+            <Crud title={"auto"} context={"auto"}/>
         </div>
     )
 }
