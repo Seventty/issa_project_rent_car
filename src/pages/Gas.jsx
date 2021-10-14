@@ -4,7 +4,7 @@ import Crud from './Crud';
 const Gas = () => {
     return (
         <div className="gas">
-            <Crud title={"gas"} context={"combustible"}/>
+            <Crud title={"combustible"} context={"combustible"}/>
         </div>
     )
 }
